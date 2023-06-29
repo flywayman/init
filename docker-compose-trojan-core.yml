@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+  trojan-panel-core:
+    image: jonssonyan/trojan-panel-core
+    container_name: trojan-panel-core
+    restart: always
+    network_mode: host
+    volumes:
+      - "/tpdata/trojan-panel-core/bin/xray/config:/tpdata/trojan-panel-core/bin/xray/config"
+      - "/tpdata/trojan-panel-core/bin/trojango/config:/tpdata/trojan-panel-core/bin/trojango/config"
+      - "/tpdata/trojan-panel-core/bin/hysteria/config:/tpdata/trojan-panel-core/bin/hysteria/config"
+      - "/tpdata/trojan-panel-core/bin/naiveproxy/config:/tpdata/trojan-panel-core/bin/naiveproxy/config"
+      - "/tpdata/trojan-panel-core/logs/:/tpdata/trojan-panel-core/logs/"
+      - "/tpdata/trojan-panel-core/config/sqlite/:/tpdata/trojan-panel-core/config/sqlite/"
+      - "/tpdata/cert/:/tpdata/cert/"
+      - "/tpdata/web/:/tpdata/web/"
+      - "/etc/localtime:/etc/localtime"
+    environment:
+      - "GIN_MODE=release"
+      - "mariadb_ip=${MYSQL_IP}"
+      - "mariadb_port=${MYSQL_PORT}"
+      - "mariadb_user=${MYSQL_USER}"
+      - "mariadb_pas=${MYSQL_PASSWORD}"
+      - "database=trojan_panel_db"
+      - "account-table=account"
+      - "redis_host=${REDIS_IP}"
+      - "redis_port=${REDIS_PORT}"
+      - "redis_pass=${REDIS_PASSWORD}"
+      - "crt_path=/tpdata/cert/cert"
+      - "key_path=/tpdata/cert/key"
+      - "grpc_port=8100"

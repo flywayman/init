@@ -1,0 +1,21 @@
+version: '3'
+services:
+  trojan-panel-mariadb:
+    image: mariadb:10.7.3
+    container_name: trojan-panel-mariadb
+    restart: always
+    network_mode: host
+    volumes: 
+      - /tpdata/mysql/data:/var/lib/mysql
+    environment:
+      MYSQL_DATABASE: trojan_panel_db
+      MYSQL_ROOT_PASSWORD: ${MYSQL_PASSWORD}
+      TZ: Asia/Shanghai
+    command: --port=9507
+:
+  trojan-panel-redis:
+    image: redis:6.2.7
+    container_name: trojan-panel-redis
+    restart: always
+    network_mode: host
+    command: redis-server --requirepass ${REDIS_PASSWORD} --port 6378
