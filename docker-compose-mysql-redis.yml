@@ -12,7 +12,6 @@ services:
       MYSQL_ROOT_PASSWORD: ${MYSQL_PASSWORD}
       TZ: Asia/Shanghai
     command: --port=9507
-:
   trojan-panel-redis:
     image: redis:6.2.7
     container_name: trojan-panel-redis
