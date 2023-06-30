@@ -10,5 +10,5 @@ echo '替换域名完成'
 
 echo 'input white_ip:'
 read white_ip
-sed -i "s/\${white_ip}/$white_ip}/g" ./tpdata/trojan-panel-ui/nginx/default.conf
+sed -i "s/\${white_ip}/${white_ip}/g" ./tpdata/trojan-panel-ui/nginx/default.conf
 
