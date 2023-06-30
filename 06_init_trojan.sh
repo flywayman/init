@@ -1,3 +1,3 @@
 #!/bin/bash
 
-cp ./tpdata /
+cp -r ./tpdata /
