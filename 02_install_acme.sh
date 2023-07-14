@@ -2,7 +2,7 @@
 
 curl https://get.acme.sh | sh
 alias acme.sh=~/.acme.sh/acme.sh
-acme.sh  --set-default-ca  letsencrypt
+acme.sh  --set-default-ca --server letsencrypt
 
 echo 'input namesilo key:'
 read key
